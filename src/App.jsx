@@ -1,4 +1,3 @@
-/* import { useState } from 'react' */
 import AppList from "./components/AppList"
 
 function App() {

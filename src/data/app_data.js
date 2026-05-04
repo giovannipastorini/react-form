@@ -27,3 +27,5 @@ const papers=[
         body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis eveniet cum magnam aperiam minima, suscipit blanditiis, quis tempora similique molestiae explicabo esse, expedita cumque minus sint repudiandae ratione unde id."
     }
 ]
+
+export {papers}
