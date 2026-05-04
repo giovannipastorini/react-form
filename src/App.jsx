@@ -1,5 +1,6 @@
 import AppList from "./components/AppList"
 
+
 function App() {
   
 
@@ -10,6 +11,8 @@ function App() {
         <div className="row">
           <div className="col-12 my-3">
             <AppList />
+           
+
           </div>
         </div>
       </div>
