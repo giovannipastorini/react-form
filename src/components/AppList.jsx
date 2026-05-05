@@ -9,8 +9,8 @@ export default function AppList (){
     const [papersList, setPapersList]= useState(papers);
     const [newTitle, setNewTitle]=useState("");
     
-    function invioForm (e){
-        e.preventDefault();
+    function handleSubmit (e){
+        e.preventDefault(); //per impedire il ricaricamento del form
         
         const idArticle=papersList.length+1;
         
@@ -24,33 +24,44 @@ export default function AppList (){
         console.log(newArticle);
         
         setPapersList([...papersList, newArticle]);
-        
+        setNewTitle("");
     }
 
+    const updateList= (idArticolo) =>{
+        /* console.log("sono dentro up"); */
+        
+        const newList= papersList.filter (paper =>{
+            return paper.id !== idArticolo;
+        })
+        
+        setPapersList([...newList]);
+        
+        
+    }
 
     return(
         <>
             <ul>
                     {
-                        papersList.map(articolo =>{
-                            /* counter=articolo.id; */
-                            /* console.log(counter); */
-    
+                        papersList.map(articolo =>{    
                             
                             return(
-                                <li key={articolo.id}>{articolo.title}</li>
+                                <li key={articolo.id} className='d-flex justify-content-between my-2'>
+                                    {articolo.title}
+                                    <button className='btn btn-sm btn-danger'onClick={()=> updateList(articolo.id)}>Elimina</button>
+                                </li>
                             )
                         })
                     }
             </ul>
             <hr />
 
-            <form onSubmit={invioForm}>
+            <form onSubmit={handleSubmit}>
                 <div className="my-1">
                     <label htmlFor="title"><strong>Inserisci titolo nuovo articolo:</strong></label>
                 </div>
                 <div className="my-1">
-                    <input  id="title" 
+                    <input  id="title"
                             type="text" 
                             value={newTitle}
                             onChange={e => { setNewTitle(e.target.value) }} />
